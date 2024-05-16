@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.carlospriego.Controllers.MenuProductosController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/MenuProductos.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblClientes" layoutX="52.0" layoutY="151.0" prefHeight="303.0" prefWidth="906.0">
+         <columns>
+            <TableColumn fx:id="colProductoId" prefWidth="74.0" text="ProductoId" />
+            <TableColumn fx:id="colCategoriaProductoId1" text="nombre" />
+            <TableColumn fx:id="colDescripcion" prefWidth="77.0" text="descripcion" />
+            <TableColumn fx:id="colCantidadStock" prefWidth="71.0" text="stock" />
+            <TableColumn fx:id="colPrecioVentaU" prefWidth="112.0" text="precio de venta unitario" />
+            <TableColumn fx:id="colPrecioM" prefWidth="108.0" text="precio de venta mayor" />
+            <TableColumn fx:id="colPrecioC" prefWidth="106.0" text="precio de compra" />
+            <TableColumn fx:id="colDistribuidor" prefWidth="123.0" text="distribuidor" />
+            <TableColumn fx:id="colCategoria" prefWidth="154.0" text="categoria" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfSerch" layoutX="618.0" layoutY="111.0" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="295.0" promptText="BUSCAR" />
+      <Button fx:id="btnBuscar" layoutX="921.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="35.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Lupa.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <GridPane layoutX="304.0" layoutY="665.0" prefHeight="57.0" prefWidth="392.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="90.0" text="Eliminar" GridPane.columnIndex="1" />
+            <Button fx:id="btnRegresar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="90.0" text="Regresar" GridPane.columnIndex="3" />
+            <Button fx:id="btnVaciar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="90.0" text="Vaciar" />
+            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="90.0" text="Guardar" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
+      <TextField fx:id="tfProductoId" layoutX="70.0" layoutY="490.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfNombre" layoutX="70.0" layoutY="547.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfStock" layoutX="70.0" layoutY="602.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfVentaM" layoutX="601.0" layoutY="490.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfDescripcion" layoutX="316.0" layoutY="490.0" prefHeight="85.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfVentaU" layoutX="316.0" layoutY="601.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfPrecioC" layoutX="601.0" layoutY="547.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfCategoria" layoutX="601.0" layoutY="601.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+   </children>
+</AnchorPane>

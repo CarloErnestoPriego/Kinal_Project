@@ -11,24 +11,24 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="775.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.MenuClientesController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.MenuClientesController">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="800.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/Fondo_Clientes.png" />
+            <Image url="@../Images/MenuClientes.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblClientes" layoutX="94.0" layoutY="196.0" prefHeight="450.0" prefWidth="820.0">
+      <TableView fx:id="tblClientes" layoutX="48.0" layoutY="121.0" prefHeight="282.0" prefWidth="558.0">
         <columns>
-          <TableColumn fx:id="colClienteId" prefWidth="68.0" text="Cliente Id" />
-          <TableColumn fx:id="colNombre" prefWidth="112.0" text="nombre" />
-            <TableColumn fx:id="colApellido" prefWidth="118.0" text="apellido" />
-            <TableColumn fx:id="colTelefono" prefWidth="127.0" text="telefono" />
-            <TableColumn fx:id="colDireccion" prefWidth="288.0" text="direccion" />
-            <TableColumn fx:id="colNit" maxWidth="173.0" prefWidth="106.0" text="nit" />
+          <TableColumn fx:id="colClienteId" prefWidth="58.0" text="Cliente Id" />
+          <TableColumn fx:id="colNombre" prefWidth="97.0" text="nombre" />
+            <TableColumn fx:id="colApellido" prefWidth="108.0" text="apellido" />
+            <TableColumn fx:id="colTelefono" prefWidth="73.0" text="telefono" />
+            <TableColumn fx:id="colDireccion" prefWidth="155.0" text="direccion" />
+            <TableColumn fx:id="colNit" maxWidth="173.0" prefWidth="66.0" text="nit" />
         </columns>
       </TableView>
-      <GridPane layoutX="977.0" layoutY="250.0" prefHeight="342.0" prefWidth="144.0">
+      <GridPane layoutX="626.0" layoutY="109.0" prefHeight="307.0" prefWidth="84.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -45,8 +45,8 @@
             <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="59.0" prefWidth="116.0" text="Eliminar" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TextField fx:id="tfSerch" layoutX="510.0" layoutY="129.0" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="342.0" promptText="BUSCAR" />
-      <Button fx:id="btnSerch" layoutX="867.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="42.0" prefWidth="47.0">
+      <TextField fx:id="tfSerch" layoutX="297.0" layoutY="61.0" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="295.0" promptText="BUSCAR" />
+      <Button fx:id="btnSerch" layoutX="600.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="35.0">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

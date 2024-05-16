@@ -54,10 +54,10 @@ public class MenuClientesController implements Initializable {
         if (event.getSource() == btnRegresar) {
             stage.menuPrincipalView();
         }else if(event.getSource() == btnAgregar){
-            stage.fromClienteView(1);
+            stage.formClienteView(1);
         }else if(event.getSource() == btnEditar){
             ClienteDTO.getClienteDTO().setCliente((Clientes) tblClientes.getSelectionModel().getSelectedItem());
-            stage.fromClienteView(2);
+            stage.formClienteView(2);
         }else if (event.getSource() == btnEliminar) {
             eliminarClientes(((Clientes)tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
             CargarDatos();

@@ -40,16 +40,16 @@ public class FormClientesController implements Initializable {
     @FXML
     public void handleButtonAction(ActionEvent event){
         if (event.getSource() == btnCancelar) {
-            stage.menuClientesView();
+            stage.menuClienteView();
             ClienteDTO.getClienteDTO().setCliente(null);
         }else if(event.getSource() == btnGuardar){
             if (op == 1) {
                 agregarClientes();
-                stage.menuClientesView();
+                stage.menuClienteView();
             }else if (op == 2) {
                 editarClientes();
                 ClienteDTO.getClienteDTO().setCliente(null);
-                stage.menuClientesView();
+                stage.menuClienteView();
             }
         }
     }
