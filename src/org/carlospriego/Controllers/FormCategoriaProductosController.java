@@ -31,73 +31,86 @@ import org.carlospriego.Utils.SuperKinalAlert;
 public class FormCategoriaProductosController implements Initializable {
 
     private Main stage;
-    
     private int op;
+    
     
     private static Connection conexion = null;
     private static PreparedStatement statement = null;
     
-    @FXML
-    TextField tfCategoriaProductoId, tfNombre;
+   @FXML
+    Button btnCancelar,btnGuardar;
+   
+   @FXML
+   TextField tfCategoriaPId,tfNombreCategoriaP,tfDescripcionCategoriaP;
     
     @FXML
-    TextArea taDescripcion;
-    @FXML
-    Button btnGuardar, btnCancelar;
+    private void handleButtonAction(ActionEvent event) {
     
-    @FXML
-    public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnCancelar){
-            stage.menuCategoriaProductoView();
-            CategoriaProductoDTO.getCategoriaProductoDTO().setCategoriaProducto(null);
+            CategoriaProductoDTO.getCategoriaPDTO().setCategoriaP(null);
+            stage.menuCategoriaPView();
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
-                if(!tfNombre.getText().equals("") && !taDescripcion.getText().equals("")){
-                    agregarCategoriaProducto();
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(400);
-                    stage.menuCategoriaProductoView();
+                if(!tfNombreCategoriaP.getText().equals("") && !tfDescripcionCategoriaP.getText().equals("")){
+                    agregarCategoriaP();
+                    SuperKinalAlert.getInstance().mostrarAlertasInformacion(400);
+                    stage.menuCategoriaPView();
                 }else{
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
-                    tfNombre.requestFocus();
+                    SuperKinalAlert.getInstance().mostrarAlertasInformacion(600);
+                    if(tfNombreCategoriaP.getText().equals("")){
+                        tfNombreCategoriaP.requestFocus();
+                    }else if(tfDescripcionCategoriaP.getText().equals("")){
+                        tfDescripcionCategoriaP.requestFocus();
+                    }
                 }
+                
             }else if(op == 2){
-                if(!tfNombre.getText().equals("") && !taDescripcion.getText().equals("")){
+                if(!tfNombreCategoriaP.getText().equals("") && !tfDescripcionCategoriaP.getText().equals("")){
+                    editarCategoriaP();
                     if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK){
-                        editarCategoriaProducto();
-                        CategoriaProductoDTO.getCategoriaProductoDTO().setCategoriaProducto(null);
-                        SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
-                        stage.menuCategoriaProductoView();
+                        CategoriaProductoDTO.getCategoriaPDTO().setCategoriaP(null);
+                        SuperKinalAlert.getInstance().mostrarAlertasInformacion(500);
+                        stage.menuCategoriaPView();
                     }else{
-                        stage.menuCategoriaProductoView();
+                        stage.menuCategoriaPView();
                     }
                 }else{
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
-                    tfNombre.requestFocus();
+                    SuperKinalAlert.getInstance().mostrarAlertasInformacion(600);
+                    if(tfNombreCategoriaP.getText().equals("")){
+                        tfNombreCategoriaP.requestFocus();
+                    }else if(tfDescripcionCategoriaP.getText().equals("")){
+                        tfDescripcionCategoriaP.requestFocus();
+                    }
                 }
+                
             }
         }
+    
     }
+    
+    
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(CategoriaProductoDTO.getCategoriaProductoDTO().getCategoriaProducto() != null){
-            cargarDatos(CategoriaProductoDTO.getCategoriaProductoDTO().getCategoriaProducto());
+       if(CategoriaProductoDTO.getCategoriaPDTO().getCategoriaP() != null){
+            cargarDatos(CategoriaProductoDTO.getCategoriaPDTO().getCategoriaP());
         }
     }
     
-    public void cargarDatos(CategoriaProducto categoriaProducto){
-        tfCategoriaProductoId.setText(Integer.toString(categoriaProducto.getCategoriaProductoId()));
-        tfNombre.setText(categoriaProducto.getNombreCategoria());
-        taDescripcion.setText(categoriaProducto.getDescripcionCategoria());
+    public void cargarDatos(CategoriaProducto categoriaP){
+        tfCategoriaPId.setText(Integer.toString(categoriaP.getCategoriaproductosId()));
+        tfNombreCategoriaP.setText(categoriaP.getNombreCategoria());
+        tfDescripcionCategoriaP.setText(categoriaP.getDescripcionCategoria());
+
     }
     
-    public void agregarCategoriaProducto(){
+    public void agregarCategoriaP(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarCategoriaProducto(?, ?)";
+            String sql = "call sp_agregarCategoriaProducto(?,?)";
             statement = conexion.prepareStatement(sql);
-            statement.setString(1, tfNombre.getText());
-            statement.setString(2, taDescripcion.getText());
+            statement.setString(1, tfNombreCategoriaP.getText());
+            statement.setString(2, tfDescripcionCategoriaP.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -106,6 +119,7 @@ public class FormCategoriaProductosController implements Initializable {
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -115,14 +129,14 @@ public class FormCategoriaProductosController implements Initializable {
         }
     }
     
-    public void editarCategoriaProducto(){
+    public void editarCategoriaP(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarCategoriaProducto(?, ?, ?)";
-            statement = conexion.prepareCall(sql);
-            statement.setInt(1, Integer.parseInt(tfCategoriaProductoId.getText()));
-            statement.setString(2, tfNombre.getText());
-            statement.setString(3, taDescripcion.getText());
+            String sql = "call sp_EditarCategoriaProducto(?,?,?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1, Integer.parseInt(tfCategoriaPId.getText()));
+            statement.setString(2, tfNombreCategoriaP.getText());
+            statement.setString(3, tfDescripcionCategoriaP.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -131,6 +145,7 @@ public class FormCategoriaProductosController implements Initializable {
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -139,17 +154,12 @@ public class FormCategoriaProductosController implements Initializable {
             }
         }
     }
-
-    public Main getStage() {
-        return stage;
-    }
-
+    
     public void setStage(Main stage) {
         this.stage = stage;
     }
-
+    
     public void setOp(int op) {
         this.op = op;
     }
-    
 }

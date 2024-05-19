@@ -11,35 +11,14 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.carlospriego.Controllers.MenuDistribuidoresController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.MenuDistribuidoresController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/MenuDistribuidores.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblClientes" layoutX="68.0" layoutY="141.0" prefHeight="282.0" prefWidth="558.0">
-         <columns>
-            <TableColumn fx:id="colDistribuidorId" prefWidth="56.0" text="DistribuidorId" />
-            <TableColumn fx:id="colNombre" prefWidth="98.0" text="Nombre" />
-            <TableColumn fx:id="colTelefono" prefWidth="104.0" text="Telefono" />
-            <TableColumn fx:id="colNit" prefWidth="73.0" text="Nit" />
-            <TableColumn fx:id="colDireccion" prefWidth="149.0" text="Direccion" />
-            <TableColumn fx:id="colWeb" prefWidth="77.0" text="Web" />
-         </columns>
-      </TableView>
-      <TextField fx:id="tfSerch" layoutX="287.0" layoutY="101.0" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="295.0" promptText="BUSCAR" />
-      <Button fx:id="btnBuscar" layoutX="590.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="35.0">
-         <graphic>
-            <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Lupa.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <GridPane layoutX="641.0" layoutY="116.0" prefHeight="307.0" prefWidth="84.0">
+      <GridPane layoutX="612.0" layoutY="133.0" prefHeight="307.0" prefWidth="102.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -51,12 +30,32 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="80.0" text="Agregar" />
-            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="80.0" text="Editar" GridPane.rowIndex="1" />
-            <Button fx:id="btnReportes" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="80.0" text="Reportes" GridPane.rowIndex="3" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="80.0" text="Eliminar" GridPane.rowIndex="2" />
-            <Button fx:id="btnRegresar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="80.0" text="Regresar" GridPane.rowIndex="4" />
+            <Button fx:id="btnAgregar" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #F2F8EE;" text="Agregar" />
+            <Button fx:id="btnRegresar" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #F2F8EE;" text="Regresar" GridPane.rowIndex="4" />
+            <Button fx:id="btnEliminar" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #F2F8EE;" text="Eliminar" GridPane.rowIndex="2" />
+            <Button fx:id="btnEditar" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #F2F8EE;" text="Editar" GridPane.rowIndex="1" />
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: #F2F8EE;" text="Reportes" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <TableView fx:id="tblDistribuidores" layoutX="48.0" layoutY="133.0" prefHeight="307.0" prefWidth="556.0">
+         <columns>
+            <TableColumn fx:id="colDistribuidorId" prefWidth="86.0" text="DistribuidorId" />
+            <TableColumn fx:id="colNombreDistribuidor" prefWidth="62.0" text="Nombre " />
+            <TableColumn fx:id="colDireccionDistribuidor" prefWidth="143.0" text="Direccion" />
+            <TableColumn fx:id="colNitDistribuidor" prefWidth="68.0" text="Nit" />
+            <TableColumn fx:id="colTelefonoDistribuidor" prefWidth="107.0" text="Telefono" />
+            <TableColumn fx:id="colWeb" prefWidth="87.0" text="web" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnBuscar" layoutX="569.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="28.0" prefWidth="0.0">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Lupa.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="tfDistribuidorId" layoutX="372.0" layoutY="96.0" prefHeight="28.0" prefWidth="188.0" promptText="Ingrese el id del distribuidor a buscar" />
    </children>
 </AnchorPane>

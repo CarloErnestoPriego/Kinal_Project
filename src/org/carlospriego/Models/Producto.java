@@ -20,17 +20,15 @@ public class Producto {
     private double precioVentaMayor;
     private double precioCompra;
     private Blob imagenProducto;
-    
     private int distribuidorId;
     private String distribuidor;
-    
-    private int categoriaProductoId;
-    private String categoriaProducto;
+    private int categoriaPId;
+    private String CategoriaP;
 
     public Producto() {
     }
 
-    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, Blob imagenProducto, String distribuidor, String categoriaProducto) {
+    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, Blob imagenProducto, String distribuidor, String CategoriaP) {
         this.productoId = productoId;
         this.nombreProducto = nombreProducto;
         this.descripcionProducto = descripcionProducto;
@@ -40,7 +38,7 @@ public class Producto {
         this.precioCompra = precioCompra;
         this.imagenProducto = imagenProducto;
         this.distribuidor = distribuidor;
-        this.categoriaProducto = categoriaProducto;
+        this.CategoriaP = CategoriaP;
     }
 
     public int getProductoId() {
@@ -123,24 +121,24 @@ public class Producto {
         this.distribuidor = distribuidor;
     }
 
-    public int getCategoriaProductoId() {
-        return categoriaProductoId;
+    public int getCategoriaPId() {
+        return categoriaPId;
     }
 
-    public void setCategoriaProductoId(int categoriaProductoId) {
-        this.categoriaProductoId = categoriaProductoId;
+    public void setCategoriaPId(int categoriaPId) {
+        this.categoriaPId = categoriaPId;
     }
 
-    public String getCategoriaProducto() {
-        return categoriaProducto;
+    public String getCategoriaP() {
+        return CategoriaP;
     }
 
-    public void setCategoriaProducto(String categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
+    public void setCategoriaP(String CategoriaP) {
+        this.CategoriaP = CategoriaP;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "productoId=" + productoId + ", nombreProducto=" + nombreProducto + ", descripcionProducto=" + descripcionProducto + ", cantidadStock=" + cantidadStock + ", precioVentaUnitario=" + precioVentaUnitario + ", precioVentaMayor=" + precioVentaMayor + ", precioCompra=" + precioCompra + ", imagenProducto=" + imagenProducto + ", distribuidorId=" + distribuidorId + ", distribuidor=" + distribuidor + ", categoriaProductoId=" + categoriaProductoId + ", categoriaProducto=" + categoriaProducto + '}';
+        return "Id: " + productoId + " | " + nombreProducto;
     }
 }

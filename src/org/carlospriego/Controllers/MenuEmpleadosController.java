@@ -26,9 +26,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.carlospriego.Dao.Conexion;
+import org.carlospriego.Dto.EmpleadoDTO;
 import org.carlospriego.Models.Cargo;
 import org.carlospriego.Models.Empleado;
-import org.carlospriego.Models.Encargado;
 import org.carlospriego.System.Main;
 import org.carlospriego.Utils.SuperKinalAlert;
 
@@ -38,142 +38,75 @@ import org.carlospriego.Utils.SuperKinalAlert;
  * @author aceyt
  */
 public class MenuEmpleadosController implements Initializable {
-
     private Main stage;
-    
     private int op;
     
-    private Connection conexion = null;
-    private PreparedStatement statement = null;
-    private ResultSet resultSet = null;
-    
-    @FXML
-    TextField tfEmpleadoId, tfNombre, tfApellido, tfSueldo, tfHoraEntrada, tfHoraSalida, tfEmpleadoBuscarId;
-        
-    @FXML
-    ComboBox cmbCargo, cmbEncargado;
+    private static Connection conexion;
+    private static PreparedStatement statement;
+    private static ResultSet resultSet;
     
     @FXML
     TableView tblEmpleados;
     
     @FXML
-    TableColumn colEmpleadoId, colNombre, colApellido, colSueldo, colHoraEntrada, colHoraSalida, colCargo, colEncargadoId;
+    TableColumn colEmpleadoId,colNombreE,colApellidoE,colSueldo,colHoraEntrada,colHoraSalida,colCargoId,colEncargadoId;
     
     @FXML
-    Button btnGuardar, btnVaciar, btnRegresar, btnEliminar, btnBuscar;
+    Button btnRegresar,btnAgregar,btnEditar,btnEliminar,btnBuscar,btnAsignarE;
     
     @FXML
-    public void handleButtonAction(ActionEvent event){
+    TextField tfEmpleadoId;
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+    
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
-        }else if(event.getSource() == btnGuardar){
-            if(tfEmpleadoId.getText().equals("")){
-                agregarEmpleado();
-                cargarDatos();
-            }else{
-                editarEmpleado();
-                cargarDatos();
-            }
-        }else if(event.getSource() == btnVaciar){
-            vaciarForm();
+        }else if(event.getSource() == btnAgregar){
+            stage.formEmpleadosView(1);
+        }else if(event.getSource() == btnEditar){
+            EmpleadoDTO.getEmpleadoDTO().setEmpleado((Empleado)tblEmpleados.getSelectionModel().getSelectedItem());
+            stage.formEmpleadosView(2);
         }else if(event.getSource() == btnEliminar){
             if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(404).get() == ButtonType.OK){
                 eliminarEmpleado(((Empleado)tblEmpleados.getSelectionModel().getSelectedItem()).getEmpleadoId());
                 cargarDatos();
             }
-        }else if(event.getSource() == btnBuscar){
+        }else if (event.getSource() == btnBuscar){
             tblEmpleados.getItems().clear();
-            
-            if(tfEmpleadoBuscarId.getText().equals("")){
+            if(tfEmpleadoId.getText().equals("")){
                 cargarDatos();
+            
             }else{
                 op = 3;
                 cargarDatos();
             }
+        }else if(event.getSource() == btnAsignarE){
+            EmpleadoDTO.getEmpleadoDTO().setEmpleado((Empleado)tblEmpleados.getSelectionModel().getSelectedItem());
+            stage.formAsignarEView();
         }
-    }
     
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        cargarDatos();
-        cmbCargo.setItems(listarCargos());
-        cmbEncargado.setItems(listarEncargados());
-    }    
+    }
     
     public void cargarDatos(){
         if(op == 3){
             tblEmpleados.getItems().add(buscarEmpleado());
             op = 0;
+            
         }else{
-        tblEmpleados.setItems(listarEmpleados());
+            tblEmpleados.setItems(listarEmpleados()); 
+
             colEmpleadoId.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("empleadoId"));
-            colNombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombreEmpleado"));
-            colApellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>("apellidoEmpleado"));
+            colNombreE.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombreE"));
+            colApellidoE.setCellValueFactory(new PropertyValueFactory<Empleado, String>("apellidoE"));
             colSueldo.setCellValueFactory(new PropertyValueFactory<Empleado, Double>("sueldo"));
             colHoraEntrada.setCellValueFactory(new PropertyValueFactory<Empleado, Time>("horaEntrada"));
             colHoraSalida.setCellValueFactory(new PropertyValueFactory<Empleado, Time>("horaSalida"));
-            colCargo.setCellValueFactory(new PropertyValueFactory<Empleado, String>("cargo"));
-            colEncargadoId.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("encargado"));
-        }
-
-    }
-    
-    public void vaciarForm(){
-        tfEmpleadoId.clear();
-        tfNombre.clear();
-        tfApellido.clear();
-        tfSueldo.clear();
-        tfHoraEntrada.clear();
-        tfHoraSalida.clear();
-        cmbCargo.getSelectionModel().clearSelection();
-        cmbEncargado.getSelectionModel().clearSelection();
-    }
-    
-    @FXML
-    public void cargarForm(){
-        Empleado e = (Empleado)tblEmpleados.getSelectionModel().getSelectedItem();
-        Time horaEntrada = e.getHoraEntrada();
-        Time horaSalida = e.getHoraSalida();
-        if(e != null){
-            tfEmpleadoId.setText(Integer.toString(e.getEmpleadoId()));
-            tfNombre.setText(e.getNombreEmpleado());
-            tfApellido.setText(e.getApellidoEmpleado());
-            tfSueldo.setText(Double.toString(e.getSueldo()));
-            tfHoraEntrada.setText(horaEntrada.toString());
-            tfHoraSalida.setText(horaSalida.toString());
-            cmbCargo.getSelectionModel().select(obtenerIndexCargo());
-            cmbEncargado.getSelectionModel().select(obtenerIndexEncargado());
-        }
-    }
-    
-    public int obtenerIndexCargo(){
-        int index = 0;
-        String cargoTbl = ((Empleado)tblEmpleados.getSelectionModel().getSelectedItem()).getCargo();
-        for(int i = 0 ; i <= cmbCargo.getItems().size() ; i++){
-            String cargoCmb = cmbCargo.getItems().get(i).toString();
-            
-            if(cargoTbl.equals(cargoCmb)){
-                index = i;
-                break;
-            }
+            colCargoId.setCellValueFactory(new PropertyValueFactory<Empleado, String>("cargo"));
+            colEncargadoId.setCellValueFactory(new PropertyValueFactory<Empleado, String>("encargado"));
         }
         
-        return index;
-    }
-    
-    public int obtenerIndexEncargado(){
-        int index = 0;
-        String encargadoTbl = ((Empleado)tblEmpleados.getSelectionModel().getSelectedItem()).getEncargado();
-        for(int i = 0 ; i <= cmbEncargado.getItems().size() ; i++){
-            String encargadoCmb = cmbEncargado.getItems().get(i).toString();
-            
-            if(encargadoTbl.equals(encargadoCmb)){
-                index = i;
-                break;
-            }
-        }
         
-        return index;
     }
     
     public ObservableList<Empleado> listarEmpleados(){
@@ -181,7 +114,7 @@ public class MenuEmpleadosController implements Initializable {
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarEmpleados()";
+            String sql = "call sp_ListarEmpleados()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
@@ -190,12 +123,12 @@ public class MenuEmpleadosController implements Initializable {
                 String nombreEmpleado = resultSet.getString("nombreEmpleado");
                 String apellidoEmpleado = resultSet.getString("apellidoEmpleado");
                 double sueldo = resultSet.getDouble("sueldo");
-                Time horaEntrada = resultSet.getTime("horaEntrada");
+                Time horaentrada = resultSet.getTime("horaentrada");
                 Time horaSalida = resultSet.getTime("horaSalida");
-                String cargo = resultSet.getString("cargo");
-                String encargado = resultSet.getString("encargado");
-                
-                empleados.add(new Empleado(empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargo, encargado));
+                String cargoId = resultSet.getString("cargo");
+                String encargadoId = resultSet.getString("nombreEncargado");
+            
+                empleados.add(new Empleado(empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaentrada, horaSalida,cargoId,encargadoId));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -204,9 +137,11 @@ public class MenuEmpleadosController implements Initializable {
                 if(resultSet != null){
                     resultSet.close();
                 }
+                
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -214,178 +149,31 @@ public class MenuEmpleadosController implements Initializable {
                 System.out.println(e.getMessage());
             }
         }
+        
+        
         return FXCollections.observableList(empleados);
-    }
-    
-    public ObservableList<Cargo> listarCargos(){
-        ArrayList<Cargo> cargos = new ArrayList<>();
-        
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarCargos()";
-            statement = conexion.prepareStatement(sql);
-            resultSet = statement.executeQuery();
-            
-            while(resultSet.next()){
-                int cargoId = resultSet.getInt("cargoId");
-                String nombreCargo = resultSet.getString("nombreCargo");  
-                String descripcionCargo = resultSet.getString("descripcionCargo");
-                
-                cargos.add(new Cargo(cargoId, nombreCargo, descripcionCargo));
-            }
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(resultSet != null){
-                    resultSet.close();
-                }
-                if(statement != null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
-        
-        return FXCollections.observableList(cargos);
-    }
-    
-    public ObservableList<Encargado> listarEncargados(){
-        ArrayList<Encargado> encargados = new ArrayList<>();
-        
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarEmpleados()";
-            statement = conexion.prepareStatement(sql);
-            resultSet = statement.executeQuery();
-            
-            while(resultSet.next()){
-                int empleadoId = resultSet.getInt("empleadoId");
-                
-                encargados.add(new Encargado(empleadoId));
-            }
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(resultSet != null){
-                    resultSet.close();
-                }
-                if(statement != null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
-        
-        return FXCollections.observableList(encargados);
-    }
-    
-    public void agregarEmpleado(){
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarEmpleado(?, ?, ?, ?, ?, ?, ?)";
-            statement = conexion.prepareStatement(sql);
-            statement.setString(1, tfNombre.getText());
-            statement.setString(2, tfApellido.getText());
-            statement.setDouble(3, Double.parseDouble(tfSueldo.getText()));
-            statement.setTime(4, Time.valueOf(tfHoraEntrada.getText()));
-            statement.setTime(5, Time.valueOf(tfHoraSalida.getText()));
-            statement.setInt(6, ((Cargo)cmbCargo.getSelectionModel().getSelectedItem()).getCargoId());
-            statement.setInt(7, ((Encargado)cmbEncargado.getSelectionModel().getSelectedItem()).getEncargadoId());
-            statement.execute();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(statement!= null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    
-    public void editarEmpleado(){
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarEmpleado(?, ?, ?, ?, ?, ?, ?, ?)";
-            statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt(tfEmpleadoId.getText()));
-            statement.setString(2, tfNombre.getText());
-            statement.setString(3, tfApellido.getText());
-            statement.setDouble(3, Double.parseDouble(tfSueldo.getText()));
-            statement.setTime(5, Time.valueOf(tfHoraEntrada.getText()));
-            statement.setTime(6, Time.valueOf(tfHoraSalida.getText()));
-            statement.setInt(7, ((Cargo)cmbCargo.getSelectionModel().getSelectedItem()).getCargoId());
-            statement.setInt(8, ((Encargado)cmbEncargado.getSelectionModel().getSelectedItem()).getEncargadoId());
-            statement.execute();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(statement != null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    
-    public void asignarEncargado(){
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_asignarEncargado(?, ?)";
-            statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt(tfEmpleadoId.getText()));
-            statement.setInt(2, ((Encargado)cmbEncargado.getSelectionModel().getSelectedItem()).getEncargadoId());
-            statement.execute();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(statement!= null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
     }
     
     public void eliminarEmpleado(int empId){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_eliminarEmpleado(?)";
+            String sql = "call sp_EliminarEmpleado(?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, empId);
+            statement.setInt(1,empId);
             statement.execute();
+            
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }finally{
             try{
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -399,9 +187,9 @@ public class MenuEmpleadosController implements Initializable {
         Empleado empleado = null;
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_buscarEmpleado(?)";
+            String sql = "call sp_BuscarEmpleado(?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt(tfEmpleadoBuscarId.getText()));
+            statement.setInt(1,Integer.parseInt(tfEmpleadoId.getText()));
             resultSet = statement.executeQuery();
             
             if(resultSet.next()){
@@ -409,14 +197,14 @@ public class MenuEmpleadosController implements Initializable {
                 String nombreEmpleado = resultSet.getString("nombreEmpleado");
                 String apellidoEmpleado = resultSet.getString("apellidoEmpleado");
                 double sueldo = resultSet.getDouble("sueldo");
-                Time horaEntrada = resultSet.getTime("horaEntrada");
+                Time horaentrada = resultSet.getTime("horaentrada");
                 Time horaSalida = resultSet.getTime("horaSalida");
-                String cargoId = resultSet.getString("cargoId");
-                String encargadoId = resultSet.getString("encargadoId");
-                
-                empleado = new Empleado(empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId);
-            }
+                String cargoId = resultSet.getString("cargo");
+                String encargadoId = resultSet.getString("nombreEncargado");
             
+                empleado = new Empleado(empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaentrada, horaSalida,cargoId,encargadoId);
+
+            }   
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }finally{
@@ -424,19 +212,24 @@ public class MenuEmpleadosController implements Initializable {
                 if(resultSet != null){
                     resultSet.close();
                 }
+                
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
-                
             }catch(SQLException e){
                 System.out.println(e.getMessage());
             }
         }
-     
         return empleado;
+    }
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cargarDatos();
     }
 
     public Main getStage() {

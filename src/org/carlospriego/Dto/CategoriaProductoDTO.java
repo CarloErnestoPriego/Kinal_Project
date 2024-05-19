@@ -13,24 +13,25 @@ import org.carlospriego.Models.CategoriaProducto;
  */
 public class CategoriaProductoDTO {
     private static CategoriaProductoDTO instance;
-    private CategoriaProducto categoriaProducto;
+    private CategoriaProducto categoriaP;
     
     private CategoriaProductoDTO(){
     
     }
     
-    public static CategoriaProductoDTO getCategoriaProductoDTO(){
+    public static CategoriaProductoDTO getCategoriaPDTO(){
         if(instance == null){
             instance = new CategoriaProductoDTO();
         }
+        
         return instance;
     }
 
-    public CategoriaProducto getCategoriaProducto() {
-        return categoriaProducto;
+    public CategoriaProducto getCategoriaP() {
+        return categoriaP;
     }
 
-    public void setCategoriaProducto(CategoriaProducto categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
+    public void setCategoriaP(CategoriaProducto categoriaP) {
+        this.categoriaP = categoriaP;
     }
 }

@@ -13,25 +13,23 @@ import java.sql.Time;
  */
 public class Empleado {
     private int empleadoId;
-    private String nombreEmpleado;
-    private String apellidoEmpleado;
+    private String nombreE;
+    private String apellidoE;
     private double sueldo;
     private Time horaEntrada;
     private Time horaSalida;
-    
     private int cargoId;
     private String cargo;
-    
     private int encargadoId;
     private String encargado;
 
     public Empleado() {
     }
 
-    public Empleado(int empleadoId, String nombreEmpleado, String apellidoEmpleado, double sueldo, Time horaEntrada, Time horaSalida, String cargo, String encargado) {
+    public Empleado(int empleadoId, String nombreE, String apellidoE, double sueldo, Time horaEntrada, Time horaSalida,  String cargo, String encargado) {
         this.empleadoId = empleadoId;
-        this.nombreEmpleado = nombreEmpleado;
-        this.apellidoEmpleado = apellidoEmpleado;
+        this.nombreE = nombreE;
+        this.apellidoE = apellidoE;
         this.sueldo = sueldo;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
@@ -47,20 +45,20 @@ public class Empleado {
         this.empleadoId = empleadoId;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
+    public String getNombreE() {
+        return nombreE;
     }
 
-    public void setNombreEmpleado(String nombreEmpleado) {
-        this.nombreEmpleado = nombreEmpleado;
+    public void setNombreE(String nombreE) {
+        this.nombreE = nombreE;
     }
 
-    public String getApellidoEmpleado() {
-        return apellidoEmpleado;
+    public String getApellidoE() {
+        return apellidoE;
     }
 
-    public void setApellidoEmpleado(String apellidoEmpleado) {
-        this.apellidoEmpleado = apellidoEmpleado;
+    public void setApellidoE(String apellidoE) {
+        this.apellidoE = apellidoE;
     }
 
     public double getSueldo() {
@@ -78,13 +76,21 @@ public class Empleado {
     public void setHoraEntrada(Time horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
-    
+
     public Time getHoraSalida() {
         return horaSalida;
     }
 
     public void setHoraSalida(Time horaSalida) {
         this.horaSalida = horaSalida;
+    }
+
+    public int getCargoId() {
+        return cargoId;
+    }
+
+    public void setCargoId(int cargoId) {
+        this.cargoId = cargoId;
     }
 
     public String getCargo() {
@@ -94,13 +100,13 @@ public class Empleado {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    
-    public int getCargoId() {
-        return cargoId;
+
+    public int getEncargadoId() {
+        return encargadoId;
     }
 
-    public void setCargoId(int cargoId) {
-        this.cargoId = cargoId;
+    public void setEncargadoId(int encargadoId) {
+        this.encargadoId = encargadoId;
     }
 
     public String getEncargado() {
@@ -110,17 +116,9 @@ public class Empleado {
     public void setEncargado(String encargado) {
         this.encargado = encargado;
     }
-    
-    public int getEncargadoId() {
-        return encargadoId;
-    }
-
-    public void setEncargadoId(int encargadoId) {
-        this.encargadoId = encargadoId;
-    }
 
     @Override
     public String toString() {
-        return "Id: " + empleadoId + " | " + nombreEmpleado;
+        return "Id: " + empleadoId + " | " + nombreE + " " + apellidoE;
     }
 }

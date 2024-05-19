@@ -10,35 +10,31 @@ package org.carlospriego.Models;
  * @author aceyt
  */
 public class TicketSoporte {
-    private int ticketSoporteId;
+    private int ticketId;
     private String descripcion;
-    private String estatus;
-    
-    //Llaves foráneas con Join :)))))
+    private String Estatus;
     private int clienteId;
     private String cliente;
-    
-    //Si no se usa de ninguna manera (Objeto o Join), solamente se deja como un Id
     private int facturaId;
+    private String factura;
     
     public TicketSoporte(){
-    
     }
 
-    public TicketSoporte(int ticketSoporteId, String descripcion, String estatus, String cliente, int facturaId) {
-        this.ticketSoporteId = ticketSoporteId;
+    public TicketSoporte(int ticketId, String descripcion, String Estatus, String cliente, String factura) {
+        this.ticketId = ticketId;
         this.descripcion = descripcion;
-        this.estatus = estatus;
+        this.Estatus = Estatus;
         this.cliente = cliente;
-        this.facturaId = facturaId;
+        this.factura = factura;
     }
 
-    public int getTicketSoporteId() {
-        return ticketSoporteId;
+    public int getTicketId() {
+        return ticketId;
     }
 
-    public void setTicketSoporteId(int ticketSoporteId) {
-        this.ticketSoporteId = ticketSoporteId;
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
     }
 
     public String getDescripcion() {
@@ -50,11 +46,11 @@ public class TicketSoporte {
     }
 
     public String getEstatus() {
-        return estatus;
+        return Estatus;
     }
 
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
+    public void setEstatus(String Estatus) {
+        this.Estatus = Estatus;
     }
 
     public int getClienteId() {
@@ -81,8 +77,18 @@ public class TicketSoporte {
         this.facturaId = facturaId;
     }
 
+    public String getFactura() {
+        return factura;
+    }
+
+    public void setFactura(String factura) {
+        this.factura = factura;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "TicketSoporte{" + "ticketSoporteId=" + ticketSoporteId + ", descripcion=" + descripcion + ", estatus=" + estatus + ", clienteId=" + clienteId + ", cliente=" + cliente + ", facturaId=" + facturaId + '}';
+        return "Id: " + ticketId + " | " + descripcion;
     }
 }

@@ -13,9 +13,8 @@ public class Cargo {
     private int cargoId;
     private String nombreCargo;
     private String descripcionCargo;
-    
-    public Cargo(){
-        
+
+    public Cargo() {
     }
 
     public Cargo(int cargoId, String nombreCargo, String descripcionCargo) {
@@ -50,6 +49,7 @@ public class Cargo {
 
     @Override
     public String toString() {
-        return "id: " + cargoId + " | " + nombreCargo + " | " + descripcionCargo;
+        return "Id: " + cargoId + " | " + nombreCargo ;
+
     }
 }

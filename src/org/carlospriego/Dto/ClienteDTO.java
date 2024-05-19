@@ -13,7 +13,6 @@ import org.carlospriego.Models.Clientes;
  */
 public class ClienteDTO {
     private static ClienteDTO instance;
-    
     private Clientes cliente;
     
     private ClienteDTO(){
@@ -21,9 +20,10 @@ public class ClienteDTO {
     }
     
     public static ClienteDTO getClienteDTO(){
-        if (instance == null) {
+        if(instance == null){
             instance = new ClienteDTO();
         }
+        
         return instance;
     }
 
@@ -34,6 +34,4 @@ public class ClienteDTO {
     public void setCliente(Clientes cliente) {
         this.cliente = cliente;
     }
-    
-    
 }

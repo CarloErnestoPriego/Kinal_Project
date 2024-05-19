@@ -23,6 +23,7 @@ public class CompraDTO {
         if(instance == null){
             instance = new CompraDTO();
         }
+        
         return instance;
     }
 

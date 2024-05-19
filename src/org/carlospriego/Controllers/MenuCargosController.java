@@ -36,7 +36,6 @@ import org.carlospriego.Utils.SuperKinalAlert;
  */
 public class MenuCargosController implements Initializable {
     private Main stage;
-    
     private int op;
     
     private static Connection conexion;
@@ -47,56 +46,60 @@ public class MenuCargosController implements Initializable {
     TableView tblCargos;
     
     @FXML
-    TableColumn colCargoId, colNombre, colDescripcion;
+    TableColumn colCargoId,colNombreCargo,colDescripcionCargo;
     
     @FXML
-    Button btnRegresar, btnAgregar, btnEditar, btnEliminar, btnBuscar;
+    Button btnRegresar,btnAgregar,btnEditar,btnEliminar,btnBuscar;
     
     @FXML
     TextField tfCargoId;
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
     
-    public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
         }else if(event.getSource() == btnAgregar){
-            stage.formCargoView(1);
+            stage.formCargosView(1);
         }else if(event.getSource() == btnEditar){
             CargoDTO.getCargoDTO().setCargo((Cargo)tblCargos.getSelectionModel().getSelectedItem());
-            stage.formCargoView(2);
+            stage.formCargosView(2);
         }else if(event.getSource() == btnEliminar){
             if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(404).get() == ButtonType.OK){
                 eliminarCargo(((Cargo)tblCargos.getSelectionModel().getSelectedItem()).getCargoId());
                 cargarDatos();
             }
-        }else if(event.getSource() == btnBuscar){
+        }else if (event.getSource() == btnBuscar){
             tblCargos.getItems().clear();
-            
             if(tfCargoId.getText().equals("")){
                 cargarDatos();
+            
             }else{
                 op = 3;
                 cargarDatos();
             }
         }
-    }
     
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
     }
-    
+
     public void cargarDatos(){
         if(op == 3){
             tblCargos.getItems().add(buscarCargo());
             op = 0;
+            
         }else{
-            tblCargos.setItems(listarCargos());
-            colCargoId.setCellValueFactory(new PropertyValueFactory<Cargo, Integer>("cargoId"));
-            colNombre.setCellValueFactory(new PropertyValueFactory<Cargo, String>("nombreCargo"));
-            colDescripcion.setCellValueFactory(new PropertyValueFactory<Cargo, String>("descripcionCargo"));
+            tblCargos.setItems(listarCargos()); 
         }
+        colCargoId.setCellValueFactory(new PropertyValueFactory<Cargo, Integer>("cargoId"));
+        colNombreCargo.setCellValueFactory(new PropertyValueFactory<Cargo, String>("nombreCargo"));
+        colDescripcionCargo.setCellValueFactory(new PropertyValueFactory<Cargo, String>("descripcionCargo"));
+        
     }
-
+    
     public ObservableList<Cargo> listarCargos(){
         ArrayList<Cargo> cargos = new ArrayList<>();
         
@@ -108,9 +111,9 @@ public class MenuCargosController implements Initializable {
             
             while(resultSet.next()){
                 int cargoId = resultSet.getInt("cargoId");
-                String nombreCargo = resultSet.getString("nombreCargo");  
+                String nombreCargo = resultSet.getString("nombreCargo");
                 String descripcionCargo = resultSet.getString("descripcionCargo");
-                
+            
                 cargos.add(new Cargo(cargoId, nombreCargo, descripcionCargo));
             }
         }catch(SQLException e){
@@ -120,9 +123,11 @@ public class MenuCargosController implements Initializable {
                 if(resultSet != null){
                     resultSet.close();
                 }
+                
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -131,48 +136,18 @@ public class MenuCargosController implements Initializable {
             }
         }
         
+        
         return FXCollections.observableList(cargos);
     }
+    
     
     public void eliminarCargo(int carId){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_eliminarCargo(?)";
             statement = conexion.prepareStatement(sql);
-            statement.setInt(1, carId);
+            statement.setInt(1,carId);
             statement.execute();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }finally{
-            try{
-                if(statement != null){
-                    statement.close();
-                }
-                if(conexion != null){
-                    conexion.close();
-                }
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    
-    public Cargo buscarCargo(){
-        Cargo cargo = null;
-        try{
-            conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_buscarCargo(?)";
-            statement = conexion.prepareStatement(sql);
-            statement.setInt(1, Integer.parseInt(tfCargoId.getText()));
-            resultSet = statement.executeQuery();
-            
-            if(resultSet.next()){
-                int cargoId = resultSet.getInt("cargoId");
-                String nombreCargo = resultSet.getString("nombreCargo");
-                String descripcionCargo = resultSet.getString("descripcionCargo");
-                
-                cargo = new Cargo(cargoId, nombreCargo, descripcionCargo);
-            }
             
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -181,21 +156,60 @@ public class MenuCargosController implements Initializable {
                 if(resultSet != null){
                     resultSet.close();
                 }
+                
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
-                
             }catch(SQLException e){
                 System.out.println(e.getMessage());
             }
         }
-     
+    }
+    
+    
+    public Cargo buscarCargo(){
+        Cargo cargo = null;
+        try{
+            conexion = Conexion.getInstance().obtenerConexion();
+            String sql = "call sp_buscarCargoPorID(?)";
+            statement = conexion.prepareStatement(sql);
+            statement.setInt(1,Integer.parseInt(tfCargoId.getText()));
+            resultSet = statement.executeQuery();
+            
+            if(resultSet.next()){
+                int cargoId = resultSet.getInt("cargoId");
+                String nombreCargo = resultSet.getString("nombreCargo");
+                String descripcionCargo = resultSet.getString("descripcionCargo");
+                
+                cargo = new Cargo(cargoId, nombreCargo, descripcionCargo);
+            }   
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                
+                if(statement != null){
+                    statement.close();
+                }
+                
+                if(conexion != null){
+                    conexion.close();
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
         return cargo;
     }
-
+    
+    
     public Main getStage() {
         return stage;
     }

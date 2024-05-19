@@ -16,25 +16,25 @@ public class Factura {
     private int facturaId;
     private Date fecha;
     private Time hora;
-    
     private int clienteId;
-    private String cliente;
+    private String Cliente;
     private int empleadoId;
-    private String empleado;
-    
-    private double total;
+    private String Empleado;
+    private double Total;
 
     public Factura() {
     }
 
-    public Factura(int facturaId, Date fecha, Time hora, String cliente, String empleado, double total) {
+    public Factura(int facturaId, Date fecha, Time hora, String Cliente, String Empleado, double Total) {
         this.facturaId = facturaId;
         this.fecha = fecha;
         this.hora = hora;
-        this.cliente = cliente;
-        this.empleado = empleado;
-        this.total = total;
+        this.Cliente = Cliente;
+        this.Empleado = Empleado;
+        this.Total = Total;
     }
+
+    
 
     public int getFacturaId() {
         return facturaId;
@@ -69,11 +69,11 @@ public class Factura {
     }
 
     public String getCliente() {
-        return cliente;
+        return Cliente;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setCliente(String Cliente) {
+        this.Cliente = Cliente;
     }
 
     public int getEmpleadoId() {
@@ -85,23 +85,25 @@ public class Factura {
     }
 
     public String getEmpleado() {
-        return empleado;
+        return Empleado;
     }
 
-    public void setEmpleado(String empleado) {
-        this.empleado = empleado;
+    public void setEmpleado(String Empleado) {
+        this.Empleado = Empleado;
     }
 
     public double getTotal() {
-        return total;
+        return Total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setTotal(double Total) {
+        this.Total = Total;
     }
+    
+    
 
     @Override
     public String toString() {
-        return "Factura{" + "facturaId=" + facturaId + ", fecha=" + fecha + ", hora=" + hora + ", clienteId=" + clienteId + ", cliente=" + cliente + ", empleadoId=" + empleadoId + ", empleado=" + empleado + ", total=" + total + '}';
+        return "Factura{" + "facturaId=" + facturaId + ", fecha=" + fecha + ", hora=" + hora + ", clienteId=" + clienteId + ", Cliente=" + Cliente + ", empleadoId=" + empleadoId + ", Empleado=" + Empleado + '}';
     }
 }

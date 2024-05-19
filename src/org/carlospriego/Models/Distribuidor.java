@@ -12,21 +12,20 @@ package org.carlospriego.Models;
 public class Distribuidor {
     private int distribuidorId;
     private String nombreDistribuidor;
-    private String telefonoDistribuidor;
-    private String nitDistribuidor;
     private String direccionDistribuidor;
+    private String nitDistribuidor;
+    private String telefonoDistribuidor;
     private String web;
 
     public Distribuidor() {
-        
     }
 
-    public Distribuidor(int distribuidorId, String nombreDistribuidor, String telefonoDistribuidor, String nitDistribuidor, String direccionDistribuidor, String web) {
+    public Distribuidor(int distribuidorId, String nombreDistribuidor, String direccionDistribuidor, String nitDistribuidor, String telefonoDistribuidor, String web) {
         this.distribuidorId = distribuidorId;
         this.nombreDistribuidor = nombreDistribuidor;
-        this.telefonoDistribuidor = telefonoDistribuidor;
-        this.nitDistribuidor = nitDistribuidor;
         this.direccionDistribuidor = direccionDistribuidor;
+        this.nitDistribuidor = nitDistribuidor;
+        this.telefonoDistribuidor = telefonoDistribuidor;
         this.web = web;
     }
 
@@ -34,7 +33,7 @@ public class Distribuidor {
         return distribuidorId;
     }
 
-    public void setDisctribuidorId(int distribuidorId) {
+    public void setDistribuidorId(int distribuidorId) {
         this.distribuidorId = distribuidorId;
     }
 
@@ -46,12 +45,12 @@ public class Distribuidor {
         this.nombreDistribuidor = nombreDistribuidor;
     }
 
-    public String getTelefonoDistribuidor() {
-        return telefonoDistribuidor;
+    public String getDireccionDistribuidor() {
+        return direccionDistribuidor;
     }
 
-    public void setTelefonoDistribuidor(String telefonoDistribuidor) {
-        this.telefonoDistribuidor = telefonoDistribuidor;
+    public void setDireccionDistribuidor(String direccionDistribuidor) {
+        this.direccionDistribuidor = direccionDistribuidor;
     }
 
     public String getNitDistribuidor() {
@@ -62,12 +61,12 @@ public class Distribuidor {
         this.nitDistribuidor = nitDistribuidor;
     }
 
-    public String getDireccionDistribuidor() {
-        return direccionDistribuidor;
+    public String getTelefonoDistribuidor() {
+        return telefonoDistribuidor;
     }
 
-    public void setDireccionDistribuidor(String direccionDistribuidor) {
-        this.direccionDistribuidor = direccionDistribuidor;
+    public void setTelefonoDistribuidor(String telefonoDistribuidor) {
+        this.telefonoDistribuidor = telefonoDistribuidor;
     }
 
     public String getWeb() {
@@ -80,6 +79,6 @@ public class Distribuidor {
 
     @Override
     public String toString() {
-        return "Distribuidor{" + "distribuidorId=" + distribuidorId + ", nombreDistribuidor=" + nombreDistribuidor + ", telefonoDistribuidor=" + telefonoDistribuidor + ", nitDistribuidor=" + nitDistribuidor + ", direccionDistribuidor=" + direccionDistribuidor + ", web=" + web + '}';
+        return "Distribuidor{" + "distribuidorId=" + distribuidorId + ", nombreDistribuidor=" + nombreDistribuidor + ", direccionDistribuidor=" + direccionDistribuidor + ", nitDistribuidor=" + nitDistribuidor + ", telefonoDistribuidor=" + telefonoDistribuidor + ", web=" + web + '}';
     }
 }

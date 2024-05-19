@@ -23,6 +23,7 @@ public class CargoDTO {
         if(instance == null){
             instance = new CargoDTO();
         }
+        
         return instance;
     }
 
@@ -32,5 +33,5 @@ public class CargoDTO {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
-    }
+    }  
 }

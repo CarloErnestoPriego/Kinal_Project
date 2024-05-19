@@ -31,73 +31,85 @@ import org.carlospriego.Utils.SuperKinalAlert;
 public class FormCargosController implements Initializable {
 
     private Main stage;
-    
     private int op;
+    
     
     private static Connection conexion = null;
     private static PreparedStatement statement = null;
     
-    @FXML
-    TextField tfCargoId, tfNombre;
+   @FXML
+    Button btnCancelar,btnGuardar;
+   
+   @FXML
+   TextField tfCargoId,tfNombreCargo,tfDescripcionCargo;
     
     @FXML
-    TextArea taDescripcion;
-    @FXML
-    Button btnGuardar, btnCancelar;
+    private void handleButtonAction(ActionEvent event) {
     
-    @FXML
-    public void handleButtonAction(ActionEvent event){
         if(event.getSource() == btnCancelar){
-            stage.menuCargoView();
             CargoDTO.getCargoDTO().setCargo(null);
+            stage.menuCargoView();
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
-                if(!tfNombre.getText().equals("") && !taDescripcion.getText().equals("")){
+                if(!tfNombreCargo.getText().equals("") && !tfDescripcionCargo.getText().equals("")){
                     agregarCargo();
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(400);
+                    SuperKinalAlert.getInstance().mostrarAlertasInformacion(400);
                     stage.menuCargoView();
                 }else{
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
-                    tfNombre.requestFocus();
+                    SuperKinalAlert.getInstance().mostrarAlertasInformacion(600);
+                    if(tfNombreCargo.getText().equals("")){
+                        tfNombreCargo.requestFocus();
+                    }else if(tfDescripcionCargo.getText().equals("")){
+                        tfDescripcionCargo.requestFocus();
+                    }
                 }
+                
             }else if(op == 2){
-                if(!tfNombre.getText().equals("") && !taDescripcion.getText().equals("")){
+                if(!tfNombreCargo.getText().equals("") && !tfDescripcionCargo.getText().equals("")){
+                    editarCargo();
                     if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK){
-                        editarCargo();
                         CargoDTO.getCargoDTO().setCargo(null);
-                        SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
+                        SuperKinalAlert.getInstance().mostrarAlertasInformacion(500);
                         stage.menuCargoView();
                     }else{
                         stage.menuCargoView();
                     }
                 }else{
-                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
-                    tfNombre.requestFocus();
+                    SuperKinalAlert.getInstance().mostrarAlertasInformacion(600);
+                    if(tfNombreCargo.getText().equals("")){
+                        tfNombreCargo.requestFocus();
+                    }else if(tfDescripcionCargo.getText().equals("")){
+                        tfDescripcionCargo.requestFocus();
+                    }
                 }
+                
             }
         }
-    }
     
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(CargoDTO.getCargoDTO().getCargo() != null){
             cargarDatos(CargoDTO.getCargoDTO().getCargo());
-        }
     }
-    
+}
+
+
     public void cargarDatos(Cargo cargo){
         tfCargoId.setText(Integer.toString(cargo.getCargoId()));
-        tfNombre.setText(cargo.getNombreCargo());
-        taDescripcion.setText(cargo.getDescripcionCargo());
+        tfNombreCargo.setText(cargo.getNombreCargo());
+        tfDescripcionCargo.setText(cargo.getDescripcionCargo());
+
     }
     
     public void agregarCargo(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarCargo(?, ?)";
+            String sql = "call sp_agregarCargos(?,?)";
             statement = conexion.prepareStatement(sql);
-            statement.setString(1, tfNombre.getText());
-            statement.setString(2, taDescripcion.getText());
+            statement.setString(1, tfNombreCargo.getText());
+            statement.setString(2, tfDescripcionCargo.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -106,6 +118,7 @@ public class FormCargosController implements Initializable {
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -114,15 +127,16 @@ public class FormCargosController implements Initializable {
             }
         }
     }
+    
     
     public void editarCargo(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarCargo(?, ?, ?)";
-            statement = conexion.prepareCall(sql);
+            String sql = "call sp_EditarCargo(?,?,?)";
+            statement = conexion.prepareStatement(sql);
             statement.setInt(1, Integer.parseInt(tfCargoId.getText()));
-            statement.setString(2, tfNombre.getText());
-            statement.setString(3, taDescripcion.getText());
+            statement.setString(2, tfNombreCargo.getText());
+            statement.setString(3, tfDescripcionCargo.getText());
             statement.execute();
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -131,6 +145,7 @@ public class FormCargosController implements Initializable {
                 if(statement != null){
                     statement.close();
                 }
+                
                 if(conexion != null){
                     conexion.close();
                 }
@@ -139,18 +154,12 @@ public class FormCargosController implements Initializable {
             }
         }
     }
-
-    public Main getStage() {
-        return stage;
-    }
-
+    
     public void setStage(Main stage) {
         this.stage = stage;
     }
-
+    
     public void setOp(int op) {
         this.op = op;
     }
-     
-    
 }

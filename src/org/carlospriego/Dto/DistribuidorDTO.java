@@ -23,6 +23,7 @@ public class DistribuidorDTO {
         if(instance == null){
             instance = new DistribuidorDTO();
         }
+        
         return instance;
     }
 

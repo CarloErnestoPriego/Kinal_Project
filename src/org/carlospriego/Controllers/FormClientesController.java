@@ -32,48 +32,52 @@ public class FormClientesController implements Initializable {
     private static Connection conexion = null;
     private static PreparedStatement statement = null;
     
-    @FXML
-    TextField tfClienteId, tfNombre, tfApellido, tfTelefono, tfDireccion, tfNit;
-    @FXML
-    Button btnGuardar, btnCancelar;
+   @FXML
+    Button btnCancelar,btnGuardar;
+   
+   @FXML
+   TextField tfClienteId,tfNombre,tfApellido,tfTelefono,tfDireccion,tfNit;
     
     @FXML
-    public void handleButtonAction(ActionEvent event){
-        if (event.getSource() == btnCancelar) {
-            stage.menuClienteView();
+    private void handleButtonAction(ActionEvent event) {
+    
+        if(event.getSource() == btnCancelar){
             ClienteDTO.getClienteDTO().setCliente(null);
+            stage.menuClienteView();
         }else if(event.getSource() == btnGuardar){
-            if (op == 1) {
-                agregarClientes();
+            if(op == 1){
+                agregarCliente();
                 stage.menuClienteView();
-            }else if (op == 2) {
-                editarClientes();
+            }else if(op == 2){
+                editarCliente();
                 ClienteDTO.getClienteDTO().setCliente(null);
                 stage.menuClienteView();
+                
             }
         }
-    }
     
+    }
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        if (ClienteDTO.getClienteDTO().getCliente() != null) {
+    public void initialize(URL location, ResourceBundle resources) {
+        if(ClienteDTO.getClienteDTO().getCliente() != null){
             cargarDatos(ClienteDTO.getClienteDTO().getCliente());
         }
     }
-    
-    public void cargarDatos(Clientes clientes){
-        tfClienteId.setText(Integer.toString(clientes.getClienteId()));
-        tfNombre.setText(clientes.getNombre());
-        tfApellido.setText(clientes.getApellido());
-        tfTelefono.setText(clientes.getTelefono());
-        tfDireccion.setText(clientes.getDireccion());
-        tfNit.setText(clientes.getNit());
+
+    public void cargarDatos(Clientes cliente){
+        tfClienteId.setText(Integer.toString(cliente.getClienteId()));
+        tfNombre.setText(cliente.getNombre());
+        tfApellido.setText(cliente.getApellido());
+        tfTelefono.setText(cliente.getTelefono());
+        tfDireccion.setText(cliente.getDireccion());
+        tfNit.setText(cliente.getNit());
+
     }
-    
-    public void agregarClientes(){
+
+    public void agregarCliente(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarCliente(?, ?, ?, ?, ?)";
+            String sql = "call sp_agregarCliente(?,?,?,?,?)";
             statement = conexion.prepareStatement(sql);
             statement.setString(1, tfNombre.getText());
             statement.setString(2, tfApellido.getText());
@@ -85,10 +89,11 @@ public class FormClientesController implements Initializable {
             System.out.println(e.getMessage());
         }finally{
             try{
-                if (statement != null) {
+                if(statement != null){
                     statement.close();
                 }
-                if (conexion != null) {
+                
+                if(conexion != null){
                     conexion.close();
                 }
             }catch(SQLException e){
@@ -97,10 +102,12 @@ public class FormClientesController implements Initializable {
         }
     }
     
-    public void editarClientes(){
+    
+    public void editarCliente(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_editarClientes(?, ?, ?, ?, ?, ?)";
+            String sql = "call sp_EditarCliente(?,?,?,?,?,?)";
+            statement = conexion.prepareStatement(sql);
             statement.setInt(1, Integer.parseInt(tfClienteId.getText()));
             statement.setString(2, tfNombre.getText());
             statement.setString(3, tfApellido.getText());
@@ -112,10 +119,11 @@ public class FormClientesController implements Initializable {
             System.out.println(e.getMessage());
         }finally{
             try{
-                if (statement != null) {
+                if(statement != null){
                     statement.close();
                 }
-                if (conexion != null) {
+                
+                if(conexion != null){
                     conexion.close();
                 }
             }catch(SQLException e){
@@ -123,7 +131,8 @@ public class FormClientesController implements Initializable {
             }
         }
     }
-
+    
+    
     public Main getStage() {
         return stage;
     }
@@ -131,9 +140,8 @@ public class FormClientesController implements Initializable {
     public void setStage(Main stage) {
         this.stage = stage;
     }
-
+    
     public void setOp(int op) {
         this.op = op;
     }
-    
 }

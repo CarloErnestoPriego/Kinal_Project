@@ -18,7 +18,6 @@ public class Clientes {
     private String nit;
 
     public Clientes() {
-        
     }
 
     public Clientes(int clienteId, String nombre, String apellido, String telefono, String direccion, String nit) {
@@ -80,6 +79,6 @@ public class Clientes {
 
     @Override
     public String toString() {
-        return "Clientes{" + "clienteId=" + clienteId + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", direccion=" + direccion + ", nit=" + nit + '}';
+        return "Id: " + clienteId + " | " + nombre + " " + apellido;
     }
 }

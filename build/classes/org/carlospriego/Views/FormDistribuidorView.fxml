@@ -9,32 +9,31 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.carlospriego.Controllers.FormDistribuidorController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.FormDistribuidorController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/FormDistribuidores.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfDistribuidorId" layoutX="38.0" layoutY="131.0" prefHeight="32.0" prefWidth="324.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
-      <TextField fx:id="tfNombre" layoutX="38.0" layoutY="195.0" prefHeight="32.0" prefWidth="324.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
-      <TextField fx:id="tfTelefono" layoutX="38.0" layoutY="259.0" prefHeight="32.0" prefWidth="324.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
-      <TextField fx:id="tfNit" layoutX="38.0" layoutY="324.0" prefHeight="32.0" prefWidth="324.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
-      <TextField fx:id="tfDireccion" layoutX="38.0" layoutY="389.0" prefHeight="32.0" prefWidth="324.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
-      <TextField fx:id="tfWeb" layoutX="38.0" layoutY="452.0" prefHeight="32.0" prefWidth="324.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
-      <GridPane layoutX="68.0" layoutY="511.0" prefHeight="67.0" prefWidth="265.0">
+      <TextField fx:id="tfDistribuidorId" editable="false" layoutX="39.0" layoutY="145.0" prefHeight="30.0" prefWidth="311.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfNombreDistribuidor" layoutX="39.0" layoutY="205.0" prefHeight="30.0" prefWidth="311.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfDireccionDistribuidor" layoutX="39.0" layoutY="270.0" prefHeight="30.0" prefWidth="311.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <GridPane layoutX="86.0" layoutY="511.0" prefHeight="55.0" prefWidth="218.0">
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="133.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="132.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="113.0" style="-fx-background-radius: 10;" text="Guardar" />
-            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="113.0" style="-fx-background-radius: 10;" text="Cancelar" GridPane.columnIndex="1" />
+            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Guardar" GridPane.valignment="CENTER" />
+            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Cancelar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
+      <TextField fx:id="tfNitDistribuidor" layoutX="39.0" layoutY="330.0" prefHeight="30.0" prefWidth="311.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfTelefonoDistribuidor" layoutX="39.0" layoutY="391.0" prefHeight="30.0" prefWidth="311.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfWeb" layoutX="39.0" layoutY="448.0" prefHeight="30.0" prefWidth="311.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
    </children>
 </AnchorPane>

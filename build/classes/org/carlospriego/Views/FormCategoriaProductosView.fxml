@@ -16,10 +16,10 @@
             <Image url="@../Images/FormCategoriaProductos.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfCategoriaProductoId" layoutX="39.0" layoutY="134.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
-      <TextField fx:id="tfNombre" layoutX="39.0" layoutY="212.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
-      <TextField fx:id="tfDescripcion" alignment="TOP_LEFT" layoutX="39.0" layoutY="288.0" prefHeight="230.0" prefWidth="322.0" promptText="Maximo 200 caracteres" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
-      <GridPane layoutX="68.0" layoutY="525.0" prefHeight="67.0" prefWidth="265.0">
+      <TextField fx:id="tfCategoriaPId" layoutX="39.0" layoutY="127.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfNombreCategoriaP" layoutX="39.0" layoutY="193.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfDescripcionCategoriaP" alignment="TOP_LEFT" layoutX="39.0" layoutY="258.0" prefHeight="242.0" prefWidth="322.0" promptText="Maximo 200 caracteres" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <GridPane layoutX="68.0" layoutY="517.0" prefHeight="67.0" prefWidth="265.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

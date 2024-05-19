@@ -10,25 +10,25 @@ package org.carlospriego.Models;
  * @author aceyt
  */
 public class CategoriaProducto {
-    private int categoriaProductoId;
+    private int categoriaproductosId;
     private String nombreCategoria;
     private String descripcionCategoria;
 
     public CategoriaProducto() {
     }
 
-    public CategoriaProducto(int categoriaProductoId, String nombreCategoria, String descripcionCategoria) {
-        this.categoriaProductoId = categoriaProductoId;
+    public CategoriaProducto(int categoriaproductosId, String nombreCategoria, String descripcionCategoria) {
+        this.categoriaproductosId = categoriaproductosId;
         this.nombreCategoria = nombreCategoria;
         this.descripcionCategoria = descripcionCategoria;
     }
 
-    public int getCategoriaProductoId() {
-        return categoriaProductoId;
+    public int getCategoriaproductosId() {
+        return categoriaproductosId;
     }
 
-    public void setCategoriaProductoId(int categoriaProductoId) {
-        this.categoriaProductoId = categoriaProductoId;
+    public void setCategoriaproductosId(int categoriaproductosId) {
+        this.categoriaproductosId = categoriaproductosId;
     }
 
     public String getNombreCategoria() {
@@ -49,6 +49,6 @@ public class CategoriaProducto {
 
     @Override
     public String toString() {
-        return "CategoriaProducto{" + "categoriaProductoId=" + categoriaProductoId + ", nombreCategoria=" + nombreCategoria + ", descripcionCategoria=" + descripcionCategoria + '}';
+         return "Id: " + categoriaproductosId + " | " + nombreCategoria ;
     }
 }

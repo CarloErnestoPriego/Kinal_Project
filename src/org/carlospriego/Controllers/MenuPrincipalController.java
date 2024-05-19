@@ -21,36 +21,35 @@ import org.carlospriego.System.Main;
 public class MenuPrincipalController implements Initializable {
     private Main stage;
     
-    @FXML
-    MenuItem btnClientes, btnTicketSoporte, btnCargos, btnCompras, btnDistribuidores, btnCategoriaProductos, btnEmpleados, btnFacturas, btnProductos;
     
     @FXML
-    public void handleButtonAction(ActionEvent event){
+    MenuItem btnClientes, btnTicketSoporte, btnCargos, btnDistribuidores, btnEmpleados, btnFacturas, btnProductos, btnCompras, btnPromociones, btnCategoriaProductos;
+    
+    @FXML
+    public void handleButtonAction(ActionEvent event) throws Exception{
         if(event.getSource() == btnClientes){
             stage.menuClienteView();
         }else if(event.getSource() == btnTicketSoporte){
             stage.menuTicketSoporteView();
         }else if(event.getSource() == btnCargos){
             stage.menuCargoView();
-        }else if(event.getSource() == btnCompras){
-            stage.menuCompraView();
         }else if(event.getSource() == btnDistribuidores){
-            stage.menuDistribuidorView();
-        }else if(event.getSource() == btnCategoriaProductos){
-            stage.menuCategoriaProductoView();
-        }else if(event.getSource() == btnEmpleados){
-            stage.menuEmpleadoView();
+            stage.menuDistribuidoresView();
+        } else if(event.getSource() == btnEmpleados){
+            stage.menuEmpleadosView();
         }else if(event.getSource() == btnFacturas){
-            stage.menuFacturaView();
-        }/**else if(event.getSource() == btnProductos){
-            stage.menuProductoView();
-        }**/
+            stage.menuFacturasView();
+        }else if(event.getSource() == btnProductos){
+            stage.menuProductosView();
+        }else if(event.getSource() == btnCompras){
+            stage.menuComprasView();
+        }else if(event.getSource() == btnPromociones){
+            stage.menuPromocionesView();
+        } else if(event.getSource() == btnCategoriaProductos){
+            stage.menuCategoriaPView();
+        }
     }
     
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-    
-    }
 
     public Main getStage() {
         return stage;
@@ -58,5 +57,11 @@ public class MenuPrincipalController implements Initializable {
 
     public void setStage(Main stage) {
         this.stage = stage;
+    }
+    
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        
     }
 }
