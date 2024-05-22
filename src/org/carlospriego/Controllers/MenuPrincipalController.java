@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import org.carlospriego.System.Main;
 
@@ -58,7 +57,6 @@ public class MenuPrincipalController implements Initializable {
     public void setStage(Main stage) {
         this.stage = stage;
     }
-    
     
     @Override
     public void initialize(URL location, ResourceBundle resources){

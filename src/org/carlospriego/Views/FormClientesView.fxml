@@ -17,23 +17,23 @@
             <Image url="@../Images/FormClientes.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfClienteId" editable="false" layoutX="27.0" layoutY="134.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfClienteId" editable="false" layoutX="27.0" layoutY="134.0" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="280.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;">
          <font>
             <Font size="19.0" />
          </font></TextField>
-      <TextField fx:id="tfNombre" layoutX="27.0" layoutY="216.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfNombre" layoutX="27.0" layoutY="216.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;">
          <font>
             <Font size="19.0" />
          </font></TextField>
-      <TextField fx:id="tfApellido" layoutX="27.0" layoutY="300.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfApellido" layoutX="27.0" layoutY="300.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;">
          <font>
             <Font size="19.0" />
          </font></TextField>
-      <TextField fx:id="tfTelefono" layoutX="27.0" layoutY="377.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfTelefono" layoutX="27.0" layoutY="377.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;">
          <font>
             <Font size="19.0" />
          </font></TextField>
-      <TextField fx:id="tfDireccion" layoutX="27.0" layoutY="458.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfDireccion" layoutX="27.0" layoutY="458.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;">
          <font>
             <Font size="19.0" />
          </font></TextField>
@@ -50,7 +50,7 @@
             <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="112.0" text="Cancelar" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TextField fx:id="tfNit" layoutX="27.0" layoutY="536.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10;">
+      <TextField fx:id="tfNit" layoutX="27.0" layoutY="536.0" onAction="#handleButtonAction" prefHeight="43.0" prefWidth="280.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;">
          <font>
             <Font size="19.0" />
          </font>

@@ -16,7 +16,7 @@
             <Image url="@../Images/FormCargos.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfCargoId" layoutX="39.0" layoutY="134.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfCargoId" editable="false" layoutX="39.0" layoutY="134.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
       <TextField fx:id="tfNombreCargo" layoutX="39.0" layoutY="212.0" prefHeight="37.0" prefWidth="322.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
       <TextField fx:id="tfDescripcionCargo" alignment="TOP_LEFT" layoutX="39.0" layoutY="288.0" prefHeight="211.0" prefWidth="322.0" promptText="Maximo 200 caracteres" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
       <GridPane layoutX="69.0" layoutY="519.0" prefHeight="67.0" prefWidth="265.0">

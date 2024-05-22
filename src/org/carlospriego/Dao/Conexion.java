@@ -17,7 +17,7 @@ public class Conexion {
     private static Conexion instance;
     private String jdburl = "jdbc:mysql://localhost:3306/Super_KinalDB?serverTimezone=GMT-6&useSSL=false";
     private String user = "root";
-    private String password = "admin";
+    private String password = "3306";
     private Conexion(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
