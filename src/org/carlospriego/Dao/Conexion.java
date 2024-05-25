@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public class Conexion {
     private static Conexion instance;
-    private String jdburl = "jdbc:mysql://localhost:3306/Super_KinalDB?serverTimezone=GMT-6&useSSL=false";
+    private String jdburl = "jdbc:mysql://localhost:3306/SuperKinalDB?serverTimezone=GMT-6&useSSL=false";
     private String user = "root";
-    private String password = "3306";
+    private String password = "admin";
     private Conexion(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -259,7 +259,7 @@ public class Main extends Application {
     
     public void formCategoriaPView(int op){
         try{
-            FormCategoriaProductosController formCategoriaP = (FormCategoriaProductosController)switchScene("FormCategoriaProductoView.fxml", 400, 600);
+            FormCategoriaProductosController formCategoriaP = (FormCategoriaProductosController)switchScene("FormCategoriaProductosView.fxml", 400, 600);
             formCategoriaP.setOp(op);
             formCategoriaP.setStage(this);
         }catch(Exception e){

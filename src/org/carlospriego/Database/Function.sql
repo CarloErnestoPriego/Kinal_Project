@@ -1,8 +1,8 @@
-use  Super_KinalDB;
+use  SuperKinalDB;
 
 Delimiter $$
 create trigger tg_totalCompra
-after insert on DetalleCompra
+after insert on DetallesCompras
 for each row
 Begin
     declare totalC decimal(10,2);
@@ -65,7 +65,7 @@ Delimiter ;
 
 Delimiter $$
 create trigger tg_totalFactura
-after insert on DetalleFactura
+after insert on DetallesFacturas
 for each row
 Begin
     declare totalFact decimal(10,2);

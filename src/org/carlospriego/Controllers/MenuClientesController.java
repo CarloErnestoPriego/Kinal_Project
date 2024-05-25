@@ -46,7 +46,7 @@ public class MenuClientesController implements Initializable {
     TableColumn colClienteId,colNombre,colApellido,colTelefono,colDireccion,colNit;
     
     @FXML
-    Button btnRegresar,btnAgregar,btnEditar,btnEliminar, btnBuscar;   
+    Button btnRegresar,btnAgregar,btnEditar,btnEliminar, tfSerch;   
     @FXML
     TextField tfClienteId;
     
@@ -62,7 +62,7 @@ public class MenuClientesController implements Initializable {
         }else if(event.getSource() == btnEliminar){
             eliminarCliente(((Clientes)tblClientes.getSelectionModel().getSelectedItem()).getClienteId());
             cargarDatos();
-        }else if(event.getSource() == btnBuscar){
+        }else if(event.getSource() == tfSerch){
             tblClientes.getItems().clear();
             
             if(tfClienteId.getText().equals("")){

@@ -10,23 +10,22 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.carlospriego.Controllers.FormProductosController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.FormProductosController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/FormProductos.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfProductoId" layoutX="37.0" layoutY="107.0" prefHeight="25.0" prefWidth="327.0" />
-      <TextField fx:id="tfNombreP" layoutX="37.0" layoutY="154.0" prefHeight="25.0" prefWidth="327.0" />
-      <TextField fx:id="tfDescripcionP" layoutX="37.0" layoutY="201.0" prefHeight="25.0" prefWidth="327.0" />
-      <TextField fx:id="tfCantidadStock" layoutX="37.0" layoutY="247.0" prefHeight="25.0" prefWidth="327.0" />
-      <TextField fx:id="tfPrecioVU" layoutX="37.0" layoutY="295.0" prefHeight="25.0" prefWidth="327.0" />
-      <TextField fx:id="tfPrecioVM" layoutX="37.0" layoutY="340.0" prefHeight="25.0" prefWidth="327.0" />
-      <TextField fx:id="tfPrecioC" layoutX="37.0" layoutY="387.0" prefHeight="25.0" prefWidth="327.0" />
-      <ComboBox fx:id="cmbDistribuidores" layoutX="37.0" layoutY="434.0" prefHeight="25.0" prefWidth="327.0" />
-      <ComboBox fx:id="cmbCategoriasP" layoutX="37.0" layoutY="482.0" prefHeight="25.0" prefWidth="327.0" />
+      <TextField fx:id="tfProductoId" editable="false" layoutX="37.0" layoutY="107.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfNombreP" layoutX="37.0" layoutY="154.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfDescripcionP" layoutX="37.0" layoutY="201.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfCantidadStock" layoutX="37.0" layoutY="247.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfPrecioVU" layoutX="37.0" layoutY="295.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfPrecioVM" layoutX="37.0" layoutY="340.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <TextField fx:id="tfPrecioC" layoutX="37.0" layoutY="387.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <ComboBox fx:id="cmbDistribuidores" layoutX="37.0" layoutY="434.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
+      <ComboBox fx:id="cmbCategoriasP" layoutX="37.0" layoutY="482.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
       <GridPane layoutX="89.0" layoutY="526.0" prefHeight="56.0" prefWidth="224.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
