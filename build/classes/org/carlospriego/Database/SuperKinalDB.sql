@@ -156,3 +156,6 @@ create table TicketsSoportes(
 );
 
 SET GLOBAL time_zone = '-6:00';
+
+select * from Empleados;
+call sp_ListarCargos();

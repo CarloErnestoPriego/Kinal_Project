@@ -45,7 +45,7 @@ public class MenuTicketSoporteController implements Initializable {
     TextField tfTicketId;
             
     @FXML
-    TextArea taDescripcion;
+    TextField tfDescripcion;
     
     @FXML
     ComboBox cmbEstatus,cmbClientes,cmbFacturas;
@@ -64,7 +64,7 @@ public class MenuTicketSoporteController implements Initializable {
         if(event.getSource() == btnRegresar){
             stage.menuPrincipalView();
         }else if(event.getSource() == btnGuardar){
-            if (!taDescripcion.getText().equals("") && cmbClientes.getValue() != null) {
+            if (!tfDescripcion.getText().equals("") && cmbClientes.getValue() != null) {
                 if (tfTicketId.getText().equals("")) {
                     SuperKinalAlert.getInstance().mostrarAlertasInformacion(400);
                     agregarTicket();
@@ -101,7 +101,7 @@ public class MenuTicketSoporteController implements Initializable {
        
        if(tc != null){
            tfTicketId.setText(Integer.toString(tc.getTicketId()));
-           taDescripcion.setText(tc.getDescripcion());
+           tfDescripcion.setText(tc.getDescripcion());
            cmbEstatus.getSelectionModel().select(0);
            cmbClientes.getSelectionModel().select(obtenerIndexCliente());
            cmbFacturas.getSelectionModel().select(0);
@@ -127,7 +127,7 @@ public class MenuTicketSoporteController implements Initializable {
     
     public void vaciarForm(){
         tfTicketId.clear();
-        taDescripcion.clear();
+        tfDescripcion.clear();
         cmbEstatus.getSelectionModel().clearSelection();
         cmbClientes.getSelectionModel().clearSelection();
         cmbFacturas.getSelectionModel().clearSelection();
@@ -191,7 +191,7 @@ public class MenuTicketSoporteController implements Initializable {
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_agregarTicketSoporte(?,?,?)";
             statement = conexion.prepareStatement(sql);
-            statement.setString(1, taDescripcion.getText());
+            statement.setString(1, tfDescripcion.getText());
             statement.setInt(2, ((Clientes)cmbClientes.getSelectionModel().getSelectedItem()).getClienteId());
             statement.setInt(3, ((Factura)cmbFacturas.getSelectionModel().getSelectedItem()).getFacturaId());
             statement.execute();
@@ -268,7 +268,7 @@ public class MenuTicketSoporteController implements Initializable {
             String sql = "call sp_EditarTicketSoporte(?,?,?,?,?)";
             statement = conexion.prepareStatement(sql);
             statement.setInt(1, Integer.parseInt(tfTicketId.getText()));
-            statement.setString(2, taDescripcion.getText());
+            statement.setString(2, tfDescripcion.getText());
             statement.setString(3,(cmbEstatus.getSelectionModel().getSelectedItem().toString()));
             statement.setInt(4, ((Clientes)cmbClientes.getSelectionModel().getSelectedItem()).getClienteId());
             statement.setInt(5, ((Factura)cmbFacturas.getSelectionModel().getSelectedItem()).getFacturaId());

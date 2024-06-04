@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.MenuTicketSoporteController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.MenuTicketSoporteController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,7 +35,7 @@
          </children>
       </GridPane>
       <TextField fx:id="tfTicketId" layoutX="117.0" layoutY="541.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
-      <TextField fx:id="taDescripcion" layoutX="360.0" layoutY="541.0" prefHeight="88.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
+      <TextField fx:id="tfDescripcion" layoutX="360.0" layoutY="541.0" prefHeight="88.0" prefWidth="214.0" style="-fx-background-radius: 10; -fx-background-color: #f3dbc3;" />
       <ComboBox fx:id="cmbClientes" layoutX="117.0" layoutY="658.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
       <ComboBox fx:id="cmbFacturas" layoutX="360.0" layoutY="658.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />
       <ComboBox fx:id="cmbEstatus" layoutX="117.0" layoutY="601.0" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #f3dbc3; -fx-background-radius: 10;" />

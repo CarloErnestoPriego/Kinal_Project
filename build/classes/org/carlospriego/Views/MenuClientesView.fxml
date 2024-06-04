@@ -36,13 +36,15 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="59.0" prefWidth="116.0" text="Agregar" />
-            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="59.0" prefWidth="116.0" text="Editar" GridPane.rowIndex="1" />
-            <Button fx:id="btnReportes" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="59.0" prefWidth="116.0" text="Reportes" GridPane.rowIndex="3" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="59.0" prefWidth="116.0" text="Eliminar" GridPane.rowIndex="2" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="116.0" text="Agregar" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="116.0" text="Editar" GridPane.rowIndex="1" />
+            <Button fx:id="btnReportes" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="116.0" text="Reportes" GridPane.rowIndex="3" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="116.0" text="Eliminar" GridPane.rowIndex="2" />
+            <Button fx:id="btnRegresar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="116.0" text="Regresar" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <TextField fx:id="tfSerch" layoutX="297.0" layoutY="61.0" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="295.0" promptText="BUSCAR" />

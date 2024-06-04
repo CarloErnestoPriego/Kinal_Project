@@ -105,7 +105,7 @@ public class MenuCargosController implements Initializable {
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_listarCargos()";
+            String sql = "call sp_ListarCargos()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
@@ -144,7 +144,7 @@ public class MenuCargosController implements Initializable {
     public void eliminarCargo(int carId){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_eliminarCargo(?)";
+            String sql = "call sp_EliminarCargo(?)";
             statement = conexion.prepareStatement(sql);
             statement.setInt(1,carId);
             statement.execute();
@@ -175,7 +175,7 @@ public class MenuCargosController implements Initializable {
         Cargo cargo = null;
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_buscarCargoPorID(?)";
+            String sql = "call sp_BuscarCargo(?)";
             statement = conexion.prepareStatement(sql);
             statement.setInt(1,Integer.parseInt(tfCargoId.getText()));
             resultSet = statement.executeQuery();

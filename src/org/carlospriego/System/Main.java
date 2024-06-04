@@ -70,18 +70,20 @@ public class Main extends Application {
     
     public void menuClienteView(){
         try{
-            MenuClientesController menuClientesView = (MenuClientesController)switchScene("MenuClientesView.fxml", 750, 500);
-            menuClientesView.setStage(this);
+            MenuClientesController menuClienteView = (MenuClientesController)switchScene("MenuClientesView.fxml", 750, 475);
+            menuClienteView.setStage(this);
         }catch(Exception e){
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
     }
     
     public void menuTicketSoporteView(){
         try{
-            MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml", 750, 500);
+            MenuTicketSoporteController menuTicketSoporteView = (MenuTicketSoporteController)switchScene("MenuTicketSoporteView.fxml", 1000, 750);
             menuTicketSoporteView.setStage(this);
         }catch(Exception e){
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
     }

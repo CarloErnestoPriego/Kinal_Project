@@ -46,9 +46,9 @@ public class MenuClientesController implements Initializable {
     TableColumn colClienteId,colNombre,colApellido,colTelefono,colDireccion,colNit;
     
     @FXML
-    Button btnRegresar,btnAgregar,btnEditar,btnEliminar, tfSerch;   
+    Button btnRegresar,btnAgregar,btnEditar,btnEliminar, btnSerch;   
     @FXML
-    TextField tfClienteId;
+    TextField tfSerch, tfClienteId;
     
     public void handleButtonAction(ActionEvent event) {
     

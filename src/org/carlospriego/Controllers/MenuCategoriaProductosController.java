@@ -107,7 +107,7 @@ public class MenuCategoriaProductosController implements Initializable {
         
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = " CALL sp_ListarCategoriasProductos()";
+            String sql = "call sp_ListarCategoriasProductos()";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
@@ -119,6 +119,7 @@ public class MenuCategoriaProductosController implements Initializable {
                 categoriasP.add(new CategoriaProducto(categoriaPId, nombreCategoria, descripcionCategoria));
             }
         }catch(SQLException e){
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }finally{
             try{
