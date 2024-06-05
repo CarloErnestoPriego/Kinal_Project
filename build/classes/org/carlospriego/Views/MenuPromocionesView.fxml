@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.carlospriego.Controllers.MenuPromocionesController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.carlospriego.Controllers.MenuPromocionesController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,7 +32,7 @@
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Music/IN5CM-ProyectoSuperKinal2024-master/src/org/eithanmonroy/image/Lupa.png" />
+                  <Image url="@../Images/Lupa.png" />
                </image>
             </ImageView>
          </graphic>

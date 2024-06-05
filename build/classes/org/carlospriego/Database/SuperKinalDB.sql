@@ -140,7 +140,7 @@ create table DetallesFacturas(
 		references Productos(productoId)
 );
 
-create table TicketsSoportes(
+create table TicketSoporte(
 	ticketSoporteId int not null auto_increment,
     descripcionTicket varchar(250) not null,
     estatus varchar (30) not null,
@@ -157,5 +157,5 @@ create table TicketsSoportes(
 
 SET GLOBAL time_zone = '-6:00';
 
-select * from Empleados;
-call sp_ListarCargos();
+select * from CategoriaProductos;
+call sp_ListarEmpleados();
