@@ -119,11 +119,10 @@ public class MenuProductosController implements Initializable {
                 double precioVentaUnitario = resultSet.getDouble("precioVentaUnitario");
                 double precioVentaMayor = resultSet.getDouble("precioVentaMayor");
                 double precioCompra = resultSet.getDouble("precioCompra");
-                Blob imagenProducto = resultSet.getBlob("imagenProducto");
                 String distribuidor = resultSet.getString("distribuidor");
                 String categoria = resultSet.getString("categoria");
             
-                productos.add(new Producto(productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra,imagenProducto,distribuidor,categoria));
+                productos.add(new Producto(productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor,precioCompra,distribuidor,categoria));
             }
         }catch(SQLException e){
             System.out.println(e.getMessage());
@@ -141,6 +140,7 @@ public class MenuProductosController implements Initializable {
                     conexion.close();
                 }
             }catch(SQLException e){
+                e.printStackTrace();
                 System.out.println(e.getMessage());
             }
         }
@@ -200,11 +200,10 @@ public class MenuProductosController implements Initializable {
                 double precioVentaUnitario = resultSet.getDouble("precioVentaUnitario");
                 double precioVentaMayor = resultSet.getDouble("precioVentaMayor");
                 double precioCompra = resultSet.getDouble("precioCompra");
-                Blob imagenProducto = resultSet.getBlob("imagenProducto");
                 String distribuidor = resultSet.getString("distribuidor");
                 String categoria = resultSet.getString("categoria");
             
-                producto = new Producto(productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, imagenProducto, distribuidor, categoria);
+                producto = new Producto(productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, distribuidor, categoria);
 
             }   
         }catch(SQLException e){

@@ -120,18 +120,6 @@ public class FormProductosController implements Initializable {
     }
     
     @FXML
-    public void handleOnDrop(DragEvent event){
-        try{
-            files = event.getDragboard().getFiles();
-            FileInputStream file = new FileInputStream(files.get(0));
-            Image image = new Image(file);
-            imgCargar.setImage(image);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    @FXML
     public void handleOnDrag(DragEvent event){
         if(event.getDragboard().hasFiles()){
             event.acceptTransferModes(TransferMode.ANY);
@@ -141,7 +129,7 @@ public class FormProductosController implements Initializable {
     public void agregarProducto(){
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_agregarProductos(?,?,?,?,?,?,?,?,?)";
+            String sql = "call sp_agregarProductos(?,?,?,?,?,?,?,?)";
             statement = conexion.prepareStatement(sql);
             statement.setString(1, tfNombreP.getText());
             statement.setString(2, tfDescripcionP.getText());
@@ -149,15 +137,8 @@ public class FormProductosController implements Initializable {
             statement.setString(4, tfPrecioVU.getText());
             statement.setString(5, tfPrecioVM.getText());
             statement.setString(6, tfPrecioC.getText());
-
-            if (files != null && !files.isEmpty() && files.get(0) != null) {
-                InputStream img = new FileInputStream(files.get(0));
-                statement.setBinaryStream(7, img);
-            } else {
-                statement.setBinaryStream(7, null); 
-            }
-            statement.setInt(8,((Distribuidor)cmbDistribuidores.getSelectionModel().getSelectedItem()).getDistribuidorId());
-            statement.setInt(9,((CategoriaProducto)cmbCategoriasP.getSelectionModel().getSelectedItem()).getCategoriaproductosId());
+            statement.setInt(7,((Distribuidor)cmbDistribuidores.getSelectionModel().getSelectedItem()).getDistribuidorId());
+            statement.setInt(8,((CategoriaProducto)cmbCategoriasP.getSelectionModel().getSelectedItem()).getCategoriaproductosId());
             statement.execute();
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -171,6 +152,7 @@ public class FormProductosController implements Initializable {
                     conexion.close();
                 }
             }catch(SQLException e){
+                e.printStackTrace();
                 System.out.println(e.getMessage());
             }
         }
@@ -233,14 +215,6 @@ public class FormProductosController implements Initializable {
             tfPrecioVU.setText(Double.toString(producto.getPrecioVentaUnitario()));
             tfPrecioVM.setText(Double.toString(producto.getPrecioVentaMayor()));
             tfPrecioC.setText(Double.toString(producto.getPrecioCompra()));
-
-            if (producto.getImagenProducto() != null) {
-                InputStream file = producto.getImagenProducto().getBinaryStream();
-                Image image = new Image(file);
-                imgMostrar.setImage(image);
-            } else {
-                imgMostrar.setImage(null);
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

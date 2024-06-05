@@ -31,11 +31,11 @@ create table Compras (
 );
 
 create table CategoriaProductos(
-	categoriaProductoId int  not null auto_increment,
+	categoriaProductosId int  not null auto_increment,
     nombreCategoria varchar(30) not null,
     descripcionCategoria varchar(100) not null,
     
-    primary key PK_categoriaProductoId(categoriaProductoId)
+    primary key PK_categoriaProductosId(categoriaProductosId)
 );
 
 create table Distribuidores(
@@ -59,13 +59,13 @@ create table Productos(
     precioCompra decimal(10,2) not null,
 -- BloB 
 	distribuidorId int not null,
-	categoriaProductoId int not null,
+	categoriaProductosId int not null,
     
     primary key PK_productoId(productoId),
 	constraint FK_Productos_Distribuidores foreign key Productos(distribuidorId)
 		references Distribuidores(distribuidorId),
-	constraint FK_Productos_CategoriaProductos foreign key Productos(categoriaProductoId)
-		references CategoriaProductos(categoriaProductoId)
+	constraint FK_Productos_CategoriaProductos foreign key Productos(categoriaProductosId)
+		references CategoriaProductos(categoriaProductosId)
 );
 
 create table DetallesCompras(
@@ -128,7 +128,7 @@ create table Facturas(
 		references Empleados(empleadoId)
 );
 
-create table DetallesFacturas(
+create table DetalleFactura(
 	detalleFacturaId int not null auto_increment,
     facturaId int not null,
     productoId int not null,
@@ -156,6 +156,3 @@ create table TicketSoporte(
 );
 
 SET GLOBAL time_zone = '-6:00';
-
-select * from CategoriaProductos;
-call sp_ListarEmpleados();

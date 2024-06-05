@@ -65,7 +65,7 @@ Delimiter ;
 
 Delimiter $$
 create trigger tg_totalFactura
-after insert on DetallesFacturas
+after insert on DetalleFactura
 for each row
 Begin
     declare totalFact decimal(10,2);

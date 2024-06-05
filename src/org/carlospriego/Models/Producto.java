@@ -19,7 +19,6 @@ public class Producto {
     private double precioVentaUnitario;
     private double precioVentaMayor;
     private double precioCompra;
-    private Blob imagenProducto;
     private int distribuidorId;
     private String distribuidor;
     private int categoriaPId;
@@ -28,7 +27,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, Blob imagenProducto, String distribuidor, String CategoriaP) {
+    public Producto(int productoId, String nombreProducto, String descripcionProducto, int cantidadStock, double precioVentaUnitario, double precioVentaMayor, double precioCompra, String distribuidor, String CategoriaP) {
         this.productoId = productoId;
         this.nombreProducto = nombreProducto;
         this.descripcionProducto = descripcionProducto;
@@ -36,7 +35,6 @@ public class Producto {
         this.precioVentaUnitario = precioVentaUnitario;
         this.precioVentaMayor = precioVentaMayor;
         this.precioCompra = precioCompra;
-        this.imagenProducto = imagenProducto;
         this.distribuidor = distribuidor;
         this.CategoriaP = CategoriaP;
     }
@@ -95,14 +93,6 @@ public class Producto {
 
     public void setPrecioCompra(double precioCompra) {
         this.precioCompra = precioCompra;
-    }
-
-    public Blob getImagenProducto() {
-        return imagenProducto;
-    }
-
-    public void setImagenProducto(Blob imagenProducto) {
-        this.imagenProducto = imagenProducto;
     }
 
     public int getDistribuidorId() {

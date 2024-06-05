@@ -411,18 +411,17 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE sp_agregarProductos(nomP VARCHAR(50), descP VARCHAR(100), cantStock INT, precioVenta DECIMAL(10,2), precioVentaM DECIMAL(10,2), precioComp DECIMAL(10,2), imgP longblob, distId INT, cateId INT)
+CREATE PROCEDURE sp_agregarProductos(nomP VARCHAR(50), descP VARCHAR(100), cantStock INT, precioVenta DECIMAL(10,2), precioVentaM DECIMAL(10,2), precioComp DECIMAL(10,2), distId INT, cateId INT)
 BEGIN
-	INSERT INTO Productos(nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, imagenProducto, distribuidorId, categoriaproductosId)
-	VALUES (nomP, descP, cantStock, precioVenta, precioVentaM, precioComp, imgP, distId, cateId);
+	INSERT INTO Productos(nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, distribuidorId, categoriaproductosId)
+	VALUES (nomP, descP, cantStock, precioVenta, precioVentaM, precioComp, distId, cateId);
 END$$
 DELIMITER ;
-
 
 DELIMITER $$
 CREATE PROCEDURE sp_ListarProductos()
 BEGIN
-	SELECT P.productoId, P.nombreProducto, P.descripcionProducto, P.cantidadStock, P.precioVentaUnitario, P.precioVentaMayor,  P.precioCompra,P.imagenProducto, 
+	SELECT P.productoId, P.nombreProducto, P.descripcionProducto, P.cantidadStock, P.precioVentaUnitario, P.precioVentaMayor,  P.precioCompra, 
        CONCAT("Distribuidor: ", D.nombreDistribuidor) AS distribuidor,
        CONCAT("Categoría: ", CP.nombreCategoria) AS categoria
 	FROM Productos P
@@ -443,7 +442,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE sp_BuscarProducto(IN prodId INT)
 BEGIN
-	SELECT P.productoId, P.nombreProducto, P.descripcionProducto, P.cantidadStock, P.precioVentaUnitario, P.precioVentaMayor,  P.precioCompra,P.imagenProducto, 
+	SELECT P.productoId, P.nombreProducto, P.descripcionProducto, P.cantidadStock, P.precioVentaUnitario, P.precioVentaMayor,  P.precioCompra, 
        CONCAT("Distribuidor: ", D.nombreDistribuidor) AS distribuidor,
        CONCAT("Categoría: ", CP.nombreCategoria) AS categoria
 		FROM Productos P
@@ -455,10 +454,10 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE PROCEDURE sp_EditarProducto(IN prodId INT, IN nomP VARCHAR(50), IN descP VARCHAR(100), IN cantStock INT, IN precioVenta DECIMAL(10,2), IN precioVentaM DECIMAL(10,2), IN precioComp DECIMAL(10,2), IN imgP longblob, IN distId INT, IN catId INT)
+CREATE PROCEDURE sp_EditarProducto(IN prodId INT, IN nomP VARCHAR(50), IN descP VARCHAR(100), IN cantStock INT, IN precioVenta DECIMAL(10,2), IN precioVentaM DECIMAL(10,2), IN precioComp DECIMAL(10,2), IN distId INT, IN catId INT)
 BEGIN
 	UPDATE Productos 
-	SET nombreProducto = nomP, descripcionProducto = descP, cantidadStock = cantStock, precioVentaUnitario = precioVenta, precioVentaMayor = precioVentaM, precioCompra = precioComp, imagenProducto = imgP, distribuidorId = distId, categoriaproductosId = catId 
+	SET nombreProducto = nomP, descripcionProducto = descP, cantidadStock = cantStock, precioVentaUnitario = precioVenta, precioVentaMayor = precioVentaM, precioCompra = precioComp, distribuidorId = distId, categoriaproductosId = catId 
     WHERE productoId = prodId;
 END$$
 DELIMITER ;
