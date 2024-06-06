@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.carlospriego.Dao.Conexion;
 import org.carlospriego.Dto.ClienteDTO;
+import org.carlospriego.Report.GenerarReporte;
 
 /**
  * FXML Controller class
@@ -46,7 +47,7 @@ public class MenuClientesController implements Initializable {
     TableColumn colClienteId,colNombre,colApellido,colTelefono,colDireccion,colNit;
     
     @FXML
-    Button btnRegresar,btnAgregar,btnEditar,btnEliminar, btnSerch;   
+    Button btnRegresar,btnAgregar,btnEditar,btnEliminar, btnSerch, btnReportes;   
     @FXML
     TextField tfSerch, tfClienteId;
     
@@ -72,6 +73,8 @@ public class MenuClientesController implements Initializable {
                 cargarDatos();
                 op = 3;
             }
+        }else if(event.getSource() == btnReportes){
+            GenerarReporte.getInstance().generarClientes();
         }
     }
     

@@ -18,11 +18,13 @@
             <Image url="@../Images/MenuFacturas.png" />
          </image>
       </ImageView>
-      <GridPane layoutX="556.0" layoutY="129.0" prefHeight="299.0" prefWidth="173.0">
+      <GridPane layoutX="557.0" layoutY="69.0" prefHeight="417.0" prefWidth="173.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -37,6 +39,8 @@
             <Button fx:id="btnRegresar" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #F2F8EE;" text="Regresar" GridPane.rowIndex="5" />
             <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #F2F8EE;" text="Reportes" GridPane.rowIndex="3" />
             <Button fx:id="btnAgregarDF" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #F2F8EE;" text="Agregar Detalle Factura" GridPane.rowIndex="4" />
+            <Button fx:id="btnFinalizarFactura" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #F2F8EE;" text="Finalizar Factura" GridPane.rowIndex="6" />
+            <Button fx:id="btnVerFactura" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #F2F8EE;" text="Ver Factura" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <TableView fx:id="tblFacturas" layoutX="55.0" layoutY="111.0" prefHeight="336.0" prefWidth="491.0">

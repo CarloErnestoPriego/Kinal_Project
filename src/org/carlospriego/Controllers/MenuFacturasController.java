@@ -31,6 +31,7 @@ import org.carlospriego.Dto.FacturaDTO;
 import org.carlospriego.Models.Clientes;
 import org.carlospriego.Models.Empleado;
 import org.carlospriego.Models.Factura;
+import org.carlospriego.Report.GenerarReporte;
 import org.carlospriego.System.Main;
 import org.carlospriego.Utils.SuperKinalAlert;
 
@@ -54,7 +55,7 @@ public class MenuFacturasController implements Initializable {
     TableColumn colFacturaId,colFecha,colHora,colCliente,colEmpleado,colTotal;
     
     @FXML
-    Button btnRegresar,btnAgregar,btnEditar,btnEliminar,btnBuscar,btnAgregarDF;
+    Button btnRegresar,btnAgregar,btnEditar,btnEliminar,btnBuscar,btnAgregarDF, btnFinalizarFactura, btnVerFactura;
     
     @FXML
     TextField tfFacturaId;
@@ -85,6 +86,10 @@ public class MenuFacturasController implements Initializable {
             }
         }else if(event.getSource() == btnAgregarDF){
             stage.formDetalleFacturaView(1);
+        }else if(event.getSource() == btnFinalizarFactura){
+            
+        }else if(event.getSource() == btnVerFactura){
+            GenerarReporte.getInstance().generarFactura(((Factura)tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId());
         }
     }
     
